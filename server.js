@@ -1,5 +1,6 @@
 import { connectDB } from "./app/db/index.js";
 import app from "./app/index.js";
+import Product from "./app/models/products.js";
 
 const port = process.env.EXPRESS_PORT || "3000";
 
@@ -13,3 +14,5 @@ connectDB()
     console.error("Error occured in MYSQL connection", error);
     process.exit(0);
   });
+
+await Product.sync();
